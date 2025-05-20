@@ -1,0 +1,21 @@
+<odoo>
+    <record id="view_hr_applicant_form_inherit_score" model="ir.ui.view">
+        <field name="name">hr.applicant.form.inherit.score</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Score">
+                    <group>
+                        <field name="cv_score"/>
+                        <field name="test_score"/>
+                        <field name="hr_score"/>
+                        <field name="matching_score" readonly="1"/>
+                        <field name="avg_score" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
