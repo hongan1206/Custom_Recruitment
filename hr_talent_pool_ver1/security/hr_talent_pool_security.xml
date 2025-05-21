@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<odoo>
-    <record id="hr_talent_pool_rule" model="ir.rule">
-        <field name="name">Talent Pool: Users can only see their own pools</field>
-        <field name="model_id" ref="model_hr_talent_pool"/>
-        <field name="domain_force">['|', ('pool_manager', '=', user.id), ('company_id', 'in', company_ids)]</field>
-        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
-    </record>
-</odoo>
