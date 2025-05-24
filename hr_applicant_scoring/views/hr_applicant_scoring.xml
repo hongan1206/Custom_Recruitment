@@ -4,6 +4,7 @@
         <field name="model">hr.applicant</field>
         <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
         <field name="arch" type="xml">
+        <!-- 3////////////////////////////////////////////////////////////////////////////////////-->
             <xpath expr="//notebook/page[3]//div[contains(@class, 'row') and contains(@class, 'ms-2')]" position="before">
                 <group>
                     <group>
@@ -11,17 +12,38 @@
                     </group>
                 </group>
             </xpath>
+        <!-- 3////////////////////////////////////////////////////////////////////////////////////-->
+        <!-- 5////////////////////////////////////////////////////////////////////////////////////-->
             <xpath expr="//notebook/page[3]//div[contains(@class, 'o_hr_skills_editable')]" position="after">
                 <div class="col-lg-3 ps-lg-12"> 
                     <group string="Assessment Scores"> 
-                        <field name="hr_score"/>
                         <field name="test_score"/>
+                        <field name="hr_score"/>
                         <field name="matching_score" readonly="1" string="Matching Score"/> 
                         <field name="avg_score" readonly="1" string="Average Score"/> 
                     </group>
                 </div>
             </xpath>
+        <!-- 5////////////////////////////////////////////////////////////////////////////////////-->
         </field>
     </record>
+
+    <!-- <record id="view_hr_applicant_form_inherit_score_skills_domain" model="ir.ui.view">
+        <field name="name">hr.applicant.form.inherit.score.skills.domain</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[3]//field[@name='candidate_skill_ids']" position="replace">
+                <field mode="list" nolabel="1" name="filtered_candidate_skill_ids" widget="skills_one2many" context="{'default_candidate_id': candidate_id, 'no_timeline': True}">
+                    <list>
+                        <field name="skill_type_id" optional="hidden"/>
+                        <field name="skill_id"/>
+                        <field name="skill_level_id"/>
+                        <field name="level_progress" widget="progressbar"/>
+                    </list>
+                </field>
+            </xpath>
+        </field>
+    </record> -->
 </odoo>
 
