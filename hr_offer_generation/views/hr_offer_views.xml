@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_offer_view_form" model="ir.ui.view">
+        <field name="name">hr.offer.form</field>
+        <field name="model">hr.offer</field>
+        <field name="arch" type="xml">
+            <form string="Job Offer">
+            <header>
+                <button
+                    name="action_send_by_email"
+                    type="object"
+                    data-hotkey="shift+e"
+                    string="Send By Email"
+                    class="oe_highlight"
+                    invisible="not id"
+                    groups="hr_recruitment.group_hr_recruitment_user"/>
+            </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="applicant_id"/>
+                            <field name="job_id"/>
+                            <field name="company_id"/>
+                        </group>
+                        <group>
+                            <field name="salary"/>
+                            <field name="currency_id"/>
+                            <field name="start_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string="Communication">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="activity_ids" widget="mail_activity"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_offer_tree" model="ir.ui.view">
+        <field name="name">hr.offer.tree</field>
+        <field name="model">hr.offer</field>
+        <field name="arch" type="xml">
+            <list string="Job Offers">
+                <field name="name"/>
+                <field name="applicant_id"/>
+                <field name="job_id"/>
+                <field name="salary"/>
+                <field name="start_date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="hr_offer_action" model="ir.actions.act_window">
+        <field name="name">Job Offers</field>
+        <field name="res_model">hr.offer</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_hr_offer_root" name="Job Offers" parent="hr_recruitment.menu_hr_recruitment_root" sequence="10" groups="hr_recruitment.group_hr_recruitment_user"/>
+    <menuitem id="menu_hr_offer" name="Offers" parent="menu_hr_offer_root" action="hr_offer_action" sequence="1" groups="hr_recruitment.group_hr_recruitment_user"/>
+</odoo>
