@@ -1,4 +1,4 @@
-Custom Module Manage Recruitment and Job applications
+Module Manage Recruitment and Job applications
 
 ---
 
