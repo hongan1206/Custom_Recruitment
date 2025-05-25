@@ -1,5 +1,4 @@
 Custom Module Manage Recruitment and Job applications
-# Temp change to enable pull request
 
 ---
 
