@@ -12,7 +12,7 @@ class CandidateSkill(models.Model):
                 applicants = self.env['hr.applicant'].search([('candidate_id', '=', candidate.id)])
                 for applicant in applicants:
                     if applicant.job_id and applicant.job_id.skill_ids:
-                        for skill in applicant.job_id.skill_ids:
+                        for skill in applicant.job_id.s2kill_ids:
                             skill_type = skill.skill_type_id
                             default_level = skill_type.skill_level_ids.filtered(lambda s: s.default_level)[:1] or skill_type.skill_level_ids[:1]
                             exists = self.env['hr.candidate.skill'].search_count([
