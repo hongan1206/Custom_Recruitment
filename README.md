@@ -1,4 +1,3 @@
-Temp change to enable pull request
 Module Manage Recruitment and Job applications
 
 ---
@@ -30,3 +29,4 @@ addons_path = /path/to/odoo/addons,/path/to/custom_addons/custom_recruitment
 3. Trần Ngọc Huyền Trang
 4. Dương Hồng Ân
 5. Ngô Huỳnh Khánh Thư
+
