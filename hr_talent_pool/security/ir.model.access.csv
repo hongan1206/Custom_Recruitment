@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_talent_pool_add_applicants,access.talent.pool.add.applicants,model_talent_pool_add_applicants,hr_recruitment.group_hr_recruitment_user,1,1,1,1
+access_hr_talent_pool_hr_talent_pool,hr.talent.pool.hr.talent.pool,model_hr_talent_pool,,1,1,1,1
+access_hr_talent_pool_user,hr.talent.pool.user,model_hr_talent_pool,base.group_user,1,0,0,0

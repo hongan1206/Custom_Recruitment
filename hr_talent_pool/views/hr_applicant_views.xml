@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Add button to list view -->
+    <record id="hr_applicant_list_view_talent_pool" model="ir.ui.view">
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.crm_case_tree_view_job"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list[1]" position="inside">
+                <header>
+                    <button
+                        name="action_talent_pool_add_applicants"
+                        type="object"
+                        class="btn-primary"
+                        string="Add Applicants"
+                        display="always"
+                        invisible="not context.get('default_talent_pool_ids')"
+                        groups="hr_recruitment.group_hr_recruitment_user"
+                    />
+                </header>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add button to form view -->
+    <record id="hr_applicant_form_view_talent_pool" model="ir.ui.view">
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="action_talent_pool_add_applicants"
+                    type="object"
+                    string="Add to Pool"
+                    invisible="is_pool_applicant or is_applicant_in_pool"
+                    groups="hr_recruitment.group_hr_recruitment_user"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Kanban view -->
+    <record id="hr_kanban_view_applicant_talent_pool" model="ir.ui.view">
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_kanban_view_applicant"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="default_group_by"></attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_hr_talent_pool_applications" model="ir.actions.act_window">
+        <field name="name">Talents</field>
+        <field name="res_model">hr.applicant</field>
+        <field name="domain">[
+            ('talent_pool_ids', '=', active_ids),
+        ]</field>
+        <field name="view_mode">list,kanban,form,graph,calendar,pivot,activity</field>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'list'}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('hr_kanban_view_applicant_talent_pool')})]"/>
+        <field name="context">{'default_talent_pool_ids': active_ids, 'create': False}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                No Talents in the pool yet
+            </p>
+            <p>
+                Try adding some to the pool
+            </p>
+        </field>
+    </record>
+</odoo>
